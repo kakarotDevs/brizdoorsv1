@@ -1,9 +1,9 @@
-import ECommerce from "@/components/Dashboard/E-commerce";
+import Dashboard from "@/components/Dashboard/Dashboard";
 
 export default function Main() {
   return (
     <>
-      <ECommerce />
+      <Dashboard />
     </>
   );
 }
