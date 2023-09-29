@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import Image from "next/image";
-import { PIDoorOpenIcon, PIKeyholeIcon, PIPackageIcon } from "../Icons/PIcons";
+import { PIDoorOpenIcon, PIKeyholeIcon } from "../Icons/PIcons";
 
 interface SidebarProps {
   sidebarOpen: boolean;
