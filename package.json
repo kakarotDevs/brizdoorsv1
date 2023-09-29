@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.24.2",
+    "@clerk/themes": "^1.7.6",
     "@phosphor-icons/react": "^2.0.13",
+    "@prisma/client": "^5.3.1",
     "@react-jvectormap/core": "^1.0.4",
     "@react-jvectormap/unitedstates": "^1.0.1",
     "@types/node": "20.4.8",
@@ -32,6 +34,7 @@
   },
   "devDependencies": {
     "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.4"
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "prisma": "^5.3.1"
   }
 }

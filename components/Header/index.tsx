@@ -2,8 +2,8 @@ import Link from "next/link";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownMessage from "./DropdownMessage";
 import DropdownNotification from "./DropdownNotification";
-import DropdownUser from "./DropdownUser";
 import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
@@ -118,7 +118,7 @@ const Header = (props: {
           </ul>
 
           {/* <!-- User Area --> */}
-          <DropdownUser />
+          <UserButton afterSignOutUrl="/" />
           {/* <!-- User Area --> */}
         </div>
       </div>

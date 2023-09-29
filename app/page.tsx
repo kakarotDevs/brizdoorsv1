@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const { userId } = await auth();
-  let href = userId ? "/journal" : "/new-user";
+  let href = userId ? "/dashboard" : "/new-user";
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-black text-white">
