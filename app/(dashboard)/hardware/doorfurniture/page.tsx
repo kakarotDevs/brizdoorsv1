@@ -8,7 +8,7 @@ const getDoorFurniture = async () => {
   return doorFurniture
 }
 
-const DoorFurniture = async () => {
+const DoorFurniturePage = async () => {
   const { data } = await getDoorFurniture()
 
   return (
@@ -29,4 +29,4 @@ const DoorFurniture = async () => {
   )
 }
 
-export default DoorFurniture
+export default DoorFurniturePage

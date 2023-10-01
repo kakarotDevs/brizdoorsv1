@@ -155,7 +155,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                           <li>
                             <Link
-                              href="/900doors"
+                              href="/doors/900doors"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                                 pathname === '/' && 'text-white'
                               } `}
@@ -165,7 +165,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                           <li>
                             <Link
-                              href="/1000doors"
+                              href="/doors/1000doors"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                                 pathname === '/' && 'text-white'
                               } `}
@@ -194,8 +194,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <Link
                         href="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === '/forms' ||
-                            pathname.includes('forms')) &&
+                          (pathname === '/' || pathname.includes('')) &&
                           'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
@@ -236,8 +235,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/hardware/locks"
                               className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === '/forms/form-elements' &&
-                                'text-white'
+                                pathname === '/hardware/locks' && 'text-white'
                               }`}
                             >
                               Locks
@@ -275,42 +273,39 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             >
                               Door Closers
                             </Link>
-                            <li />
-                            <li>
-                              <Link
-                                href="/hardware/electrolocking"
-                                className={`group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                  pathname === '/hardware/electrolocking' &&
-                                  'text-white'
-                                }`}
-                              >
-                                Electromechanical locking
-                              </Link>
-                              <li />
-                              <li>
-                                <Link
-                                  href="/hardware/pullhandles"
-                                  className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                    pathname === '/hardware/pullhandles' &&
-                                    'text-white'
-                                  }`}
-                                >
-                                  Pull Handles
-                                </Link>
-                                <li />
-                                <li>
-                                  <Link
-                                    href="/hardware/panichardware"
-                                    className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                      pathname === '/hardware/panichardware' &&
-                                      'text-white'
-                                    }`}
-                                  >
-                                    Panic Hardware
-                                  </Link>
-                                </li>
-                              </li>
-                            </li>
+                          </li>
+                          <li>
+                            <Link
+                              href="/hardware/electromechlocking"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                pathname === '/hardware/electromechlocking' &&
+                                'text-white'
+                              }`}
+                            >
+                              Electromechanical locking
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/hardware/pullhandles"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                pathname === '/hardware/pullhandles' &&
+                                'text-white'
+                              }`}
+                            >
+                              Pull Handles
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/hardware/panichardware"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                pathname === '/hardware/panichardware' &&
+                                'text-white'
+                              }`}
+                            >
+                              Panic Hardware
+                            </Link>
                           </li>
                         </ul>
                       </div>
