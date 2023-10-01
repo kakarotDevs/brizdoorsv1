@@ -1,22 +1,23 @@
-"use client";
-import { useState, useEffect } from "react";
-import Loader from "@/components/common/Loader";
+'use client'
+import { useState, useEffect } from 'react'
+import Loader from '@/components/common/Loader'
 
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import Sidebar from '@/components/Sidebar'
+import Header from '@/components/Header'
+import { PIMagnifyingGlass } from '@/components/Icons/PIcons'
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   return (
     <html lang="en">
@@ -44,6 +45,24 @@ export default function RootLayout({
 
                 {/* <!-- ===== Main Content Start ===== --> */}
                 <main>
+                  <div className="sm:block px-6 pt-6 ">
+                    <form
+                      action="https://formbold.com/s/unique_form_id"
+                      method="POST"
+                    >
+                      <div className="relative">
+                        <button className="absolute left-2 top-1/2 -translate-y-1/2">
+                          <PIMagnifyingGlass />
+                        </button>
+
+                        <input
+                          type="text"
+                          placeholder="Type to search..."
+                          className="h-10 w-full rounded-md bg-transparent pl-10 pr-4 font-medium focus:outline-none xl:w-125 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                        />
+                      </div>
+                    </form>
+                  </div>
                   <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                     {children}
                   </div>
@@ -56,5 +75,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  );
+  )
 }

@@ -1,3 +1,4 @@
+import ProductCard from '@/components/ProductCard'
 import getStripeProducts from '@/utils/products'
 
 const getDoorFurniture = async () => {
@@ -12,14 +13,18 @@ const DoorFurniture = async () => {
 
   return (
     <div>
-      Door Furniture:
-      {data.map((p) => (
-        <div>
-          <h1>{p.name}</h1>
-          <p>{p.description}</p>
-          <img src={p.images[0]} alt="" />
-        </div>
-      ))}
+      <h1 className="pb-4 text-3xl">Dormakaba</h1>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+        {data
+          .map((p) => (
+            <ProductCard
+              name={p.metadata.name}
+              price={p.metadata.price}
+              image={p.images[0]}
+            ></ProductCard>
+          ))
+          .reverse()}
+      </div>
     </div>
   )
 }
