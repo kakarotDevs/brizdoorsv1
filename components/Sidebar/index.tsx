@@ -1,66 +1,66 @@
-import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import SidebarLinkGroup from "./SidebarLinkGroup";
-import Image from "next/image";
-import { PIDoorOpenIcon, PIKeyholeIcon } from "../Icons/PIcons";
+import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import SidebarLinkGroup from './SidebarLinkGroup'
+import Image from 'next/image'
+import { PIDoorOpenIcon, PIKeyholeIcon } from '../Icons/PIcons'
 
 interface SidebarProps {
-  sidebarOpen: boolean;
-  setSidebarOpen: (arg: boolean) => void;
+  sidebarOpen: boolean
+  setSidebarOpen: (arg: boolean) => void
 }
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
-  const trigger = useRef<any>(null);
-  const sidebar = useRef<any>(null);
+  const trigger = useRef<any>(null)
+  const sidebar = useRef<any>(null)
 
-  let storedSidebarExpanded = "true";
+  let storedSidebarExpanded = 'true'
   const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? false : storedSidebarExpanded === "true",
-  );
+    storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true',
+  )
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: MouseEvent) => {
-      if (!sidebar.current || !trigger.current) return;
+      if (!sidebar.current || !trigger.current) return
       if (
         !sidebarOpen ||
         sidebar.current.contains(target) ||
         trigger.current.contains(target)
       )
-        return;
-      setSidebarOpen(false);
-    };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  });
+        return
+      setSidebarOpen(false)
+    }
+    document.addEventListener('click', clickHandler)
+    return () => document.removeEventListener('click', clickHandler)
+  })
 
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: KeyboardEvent) => {
-      if (!sidebarOpen || keyCode !== 27) return;
-      setSidebarOpen(false);
-    };
-    document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
-  });
+      if (!sidebarOpen || keyCode !== 27) return
+      setSidebarOpen(false)
+    }
+    document.addEventListener('keydown', keyHandler)
+    return () => document.removeEventListener('keydown', keyHandler)
+  })
 
   useEffect(() => {
-    localStorage.setItem("sidebar-expanded", sidebarExpanded.toString());
+    localStorage.setItem('sidebar-expanded', sidebarExpanded.toString())
     if (sidebarExpanded) {
-      document.querySelector("body")?.classList.add("sidebar-expanded");
+      document.querySelector('body')?.classList.add('sidebar-expanded')
     } else {
-      document.querySelector("body")?.classList.remove("sidebar-expanded");
+      document.querySelector('body')?.classList.remove('sidebar-expanded')
     }
-  }, [sidebarExpanded]);
+  }, [sidebarExpanded])
 
   return (
     <aside
       ref={sidebar}
       className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
@@ -70,7 +70,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           <Image
             width={176}
             height={32}
-            src={"/images/logo/logo.svg"}
+            src={'/images/logo/logo.svg'}
             alt="Logo"
           />
           Brizdoors
@@ -113,7 +113,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Dashboard --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === "/" || pathname.includes("dashboard")
+                  pathname === '/' || pathname.includes('dashboard')
                 }
               >
                 {(handleClick, open) => {
@@ -122,22 +122,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <Link
                         href="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === "/doors" ||
-                            pathname.includes("doors")) &&
-                          "bg-graydark dark:bg-meta-4"
+                          (pathname === '/doors' ||
+                            pathname.includes('doors')) &&
+                          'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault();
+                          e.preventDefault()
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true);
+                            : setSidebarExpanded(true)
                         }}
                       >
                         <PIDoorOpenIcon />
                         Doors
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                            open && "rotate-180"
+                            open && 'rotate-180'
                           }`}
                           width="20"
                           height="20"
@@ -156,7 +156,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       {/* <!-- Dropdown Menu Start --> */}
                       <div
                         className={`translate transform overflow-hidden ${
-                          !open && "hidden"
+                          !open && 'hidden'
                         }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
@@ -164,7 +164,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/900doors"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/" && "text-white"
+                                pathname === '/' && 'text-white'
                               } `}
                             >
                               900mm Doors
@@ -174,7 +174,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/1000doors"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/" && "text-white"
+                                pathname === '/' && 'text-white'
                               } `}
                             >
                               1000mm Doors
@@ -184,7 +184,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  );
+                  )
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Dashboard --> */}
@@ -192,7 +192,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Forms --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === "/hardware" || pathname.includes("hardware")
+                  pathname === '/hardware' || pathname.includes('hardware')
                 }
               >
                 {(handleClick, open) => {
@@ -201,22 +201,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <Link
                         href="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === "/forms" ||
-                            pathname.includes("forms")) &&
-                          "bg-graydark dark:bg-meta-4"
+                          (pathname === '/forms' ||
+                            pathname.includes('forms')) &&
+                          'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault();
+                          e.preventDefault()
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true);
+                            : setSidebarExpanded(true)
                         }}
                       >
                         <PIKeyholeIcon />
                         Hardware
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                            open && "rotate-180"
+                            open && 'rotate-180'
                           }`}
                           width="20"
                           height="20"
@@ -235,7 +235,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       {/* <!-- Dropdown Menu Start --> */}
                       <div
                         className={`translate transform overflow-hidden ${
-                          !open && "hidden"
+                          !open && 'hidden'
                         }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
@@ -243,8 +243,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/hardware/locks"
                               className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/forms/form-elements" &&
-                                "text-white"
+                                pathname === '/forms/form-elements' &&
+                                'text-white'
                               }`}
                             >
                               Locks
@@ -254,8 +254,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/hardware/doorfurniture"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/hardware/doorfurniture" &&
-                                "text-white"
+                                pathname === '/hardware/doorfurniture' &&
+                                'text-white'
                               }`}
                             >
                               Door Furniture
@@ -265,8 +265,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/hardware/generalhardware"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/hardware/generalhardware" &&
-                                "text-white"
+                                pathname === '/hardware/generalhardware' &&
+                                'text-white'
                               }`}
                             >
                               General Hardware
@@ -276,8 +276,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/hardware/doorclosers"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/hardware/doorclosers" &&
-                                "text-white"
+                                pathname === '/hardware/doorclosers' &&
+                                'text-white'
                               }`}
                             >
                               Door Closers
@@ -287,8 +287,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               <Link
                                 href="/hardware/electrolocking"
                                 className={`group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                  pathname === "/hardware/electrolocking" &&
-                                  "text-white"
+                                  pathname === '/hardware/electrolocking' &&
+                                  'text-white'
                                 }`}
                               >
                                 Electromechanical locking
@@ -298,8 +298,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 <Link
                                   href="/hardware/pullhandles"
                                   className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                    pathname === "/hardware/pullhandles" &&
-                                    "text-white"
+                                    pathname === '/hardware/pullhandles' &&
+                                    'text-white'
                                   }`}
                                 >
                                   Pull Handles
@@ -309,8 +309,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                   <Link
                                     href="/hardware/panichardware"
                                     className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                      pathname === "/hardware/panichardware" &&
-                                      "text-white"
+                                      pathname === '/hardware/panichardware' &&
+                                      'text-white'
                                     }`}
                                   >
                                     Panic Hardware
@@ -323,7 +323,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  );
+                  )
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Forms --> */}
@@ -339,7 +339,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Ui Elements --> */}
               <SidebarLinkGroup
-                activeCondition={pathname === "/ui" || pathname.includes("ui")}
+                activeCondition={pathname === '/ui' || pathname.includes('ui')}
               >
                 {(handleClick, open) => {
                   return (
@@ -347,14 +347,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <Link
                         href="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === "/ui" || pathname.includes("ui")) &&
-                          "bg-graydark dark:bg-meta-4"
+                          (pathname === '/ui' || pathname.includes('ui')) &&
+                          'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault();
+                          e.preventDefault()
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true);
+                            : setSidebarExpanded(true)
                         }}
                       >
                         <svg
@@ -393,7 +393,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         Other stuff
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                            open && "rotate-180"
+                            open && 'rotate-180'
                           }`}
                           width="20"
                           height="20"
@@ -412,7 +412,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       {/* <!-- Dropdown Menu Start --> */}
                       <div
                         className={`translate transform overflow-hidden ${
-                          !open && "hidden"
+                          !open && 'hidden'
                         }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
@@ -420,7 +420,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/ui/alerts"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/ui/alerts" && "text-white"
+                                pathname === '/ui/alerts' && 'text-white'
                               }`}
                             >
                               Add stuff
@@ -430,7 +430,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/ui/buttons"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-                                pathname === "/ui/buttons" && "text-white"
+                                pathname === '/ui/buttons' && 'text-white'
                               }`}
                             >
                               Add stuff
@@ -440,7 +440,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  );
+                  )
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Ui Elements --> */}
@@ -450,7 +450,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         {/* <!-- Sidebar Menu --> */}
       </div>
     </aside>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

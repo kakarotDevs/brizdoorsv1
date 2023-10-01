@@ -1,10 +1,10 @@
-import { PIUserIcon } from "@/components/Icons/PIcons";
-import { auth } from "@clerk/nextjs";
-import Link from "next/link";
+import { PIUserIcon } from '@/components/Icons/PIcons'
+import { auth } from '@clerk/nextjs'
+import Link from 'next/link'
 
 export default async function Home() {
-  const { userId } = await auth();
-  let href = userId ? "/dashboard" : "/new-user";
+  const { userId } = await auth()
+  let href = userId ? '/dashboard' : '/new-user'
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-black text-white">
@@ -22,5 +22,5 @@ export default async function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }
