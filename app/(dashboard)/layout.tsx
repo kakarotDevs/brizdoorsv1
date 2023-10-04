@@ -45,24 +45,6 @@ export default function DashboardLayout({
 
                 {/* <!-- ===== Main Content Start ===== --> */}
                 <main>
-                  <div className="sm:block px-6 pt-6 ">
-                    <form
-                      action="https://formbold.com/s/unique_form_id"
-                      method="POST"
-                    >
-                      <div className="relative">
-                        <button className="absolute left-2 top-1/2 -translate-y-1/2">
-                          <PIMagnifyingGlass />
-                        </button>
-
-                        <input
-                          type="text"
-                          placeholder="Type to search..."
-                          className="h-10 w-full rounded-md bg-transparent pl-10 pr-4 font-medium focus:outline-none xl:w-125 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                        />
-                      </div>
-                    </form>
-                  </div>
                   <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                     {children}
                   </div>

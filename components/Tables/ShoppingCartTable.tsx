@@ -1,39 +1,39 @@
-import Image from "next/image";
-import { Product } from "@/types/product";
-import Link from "next/link";
+import Image from 'next/image'
+import { Product } from '@/types/product'
+import Link from 'next/link'
 
 const productData: Product[] = [
   {
     image:
-      "/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg",
-    name: "900mm Door",
+      '/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg',
+    name: '900mm Door',
     price: 296,
   },
   {
     image:
-      "/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg",
-    name: "1000mm Door",
+      '/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg',
+    name: '1000mm Door',
     price: 546,
   },
   {
     image:
-      "/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg",
-    name: "Handles",
+      '/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg',
+    name: 'Handles',
     price: 443,
   },
   {
     image:
-      "/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg",
-    name: "Locks",
+      '/images/dormakaba/110000001009_coastal_series_1200x1200.jpg_image_slider_product_image_slider_zoom.jpg',
+    name: 'Locks',
     price: 499,
   },
-];
+]
 
 const ShoppingCartTable = () => {
   return (
     <div className="flex flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       {productData.map((product, key) => (
-        <li>
+        <li key={key}>
           <Link
             className="flex items-center justify-between gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
             href="/messages"
@@ -56,7 +56,7 @@ const ShoppingCartTable = () => {
         </li>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ShoppingCartTable;
+export default ShoppingCartTable
