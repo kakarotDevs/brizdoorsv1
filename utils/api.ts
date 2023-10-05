@@ -1,16 +1,13 @@
-import stripeClient from './stripe-loader'
-
 const createURL = (path) => {
-  return window.location.assign + path
+  return window.location.origin + path
 }
 
-export const createCheckoutSession = async () => {
+export const createCheckoutSession = async (session) => {
+  console.log('got here')
   const res = await fetch(
     new Request(createURL('/api/checkout_sessions'), {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: JSON.stringify({ session }),
     }),
   )
   if (res.ok) {

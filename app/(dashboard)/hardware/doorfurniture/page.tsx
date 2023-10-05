@@ -1,4 +1,4 @@
-import ProductCard from '@/components/ProductCard'
+import ProductCard from '@/components/Cards/ProductCard'
 import getStripeProducts from '@/utils/products'
 
 const getDoorFurniture = async () => {

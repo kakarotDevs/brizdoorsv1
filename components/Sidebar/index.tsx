@@ -106,7 +106,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Order --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === '/order' || pathname.includes('order')
+                  pathname === '/orders' || pathname.includes('orders')
                 }
               >
                 {(handleClick, open) => {
@@ -184,7 +184,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Dashboard --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === '/dashboard' || pathname.includes('dashboard')
+                  pathname === '/doors' || pathname.includes('doors')
                 }
               >
                 {(handleClick, open) => {

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { PIPlusCircle } from './Icons/PIcons'
+import { PIPlusCircle } from '../Icons/PIcons'
 
 interface ProductCardProps {
   name: string
